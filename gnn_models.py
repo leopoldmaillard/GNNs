@@ -1,5 +1,5 @@
 import tensorflow as tf
-from gnn_layers import SimpleGNNLayer, VanillaGNNLayer, GeneralGNNLayer
+from gnn_layers import SimpleGNNLayer, VanillaGNNLayer, GeneralGNNLayer, GINLayer
 
 """
 This codes provides 3 simple GNN models that will be used to perform graph filtering.
