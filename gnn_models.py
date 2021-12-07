@@ -49,3 +49,16 @@ class GeneralGNNFilter(tf.keras.Model):
         x = self.dense(x)
         
         return x
+
+class GINFilter(tf.keras.Model):
+    def __init__(self):
+        super().__init__()
+        self.gnn1 = GINLayer(64, fixed_eps=-4.2)
+        self.dense = tf.keras.layers.Dense(1)
+        
+    def call(self, inputs):
+        
+        x = self.gnn1(inputs)
+        x = self.dense(x)
+        
+        return x
