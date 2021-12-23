@@ -13,6 +13,7 @@ A GNN layer can be defined by different C matrices. For now, this project contai
 - Simple GNN : <img src="https://render.githubusercontent.com/render/math?math=C = A">
 - Vanilla GNN : <img src="https://render.githubusercontent.com/render/math?math=C = I %2B A">
 - General GNN : <img src="https://render.githubusercontent.com/render/math?math=C^{(1)} = I, C^{(2)} = A">
+- GIN
 
 ## References
 
