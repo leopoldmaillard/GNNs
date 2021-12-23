@@ -1,5 +1,6 @@
 import numpy as np
 from PIL import Image
+import tensorflow as tf
 
 """
 This method returns the adjacency matrix [num_pixels, num_pixels] and a node embedding [num_pixels, 1]
@@ -24,3 +25,19 @@ def from_image_to_graph(path_image):
     nodes = nodes/255
 
     return adjacency, nodes[:,np.newaxis]
+
+"""
+This function returns the maximum eigenvalue of the Graph Laplacian from its adjacency matrix
+"""
+def get_lambda_max(A):
+
+    # degree matrix
+    D = tf.math.pow(tf.math.reduce_sum(A, axis=0), -1/2)
+    # normalized Laplacian
+    L = tf.math.subtract(tf.eye(A.shape[0]), tf.cast(D@A@D, dtype=tf.float32))
+    # eigen decomposition
+    lambd, U = tf.linalg.eigh(L)
+    # lambda max
+    lambda_max = tf.math.reduce_max(lambd)
+
+    return lambda_max
